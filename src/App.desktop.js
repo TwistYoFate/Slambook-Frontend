@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Actions from "./Redux/Actions/Actions";
-
+import Register from "./Components/auth/Register";
 export default function App_desktop() {
   const dispatch = useDispatch();
   const data = useSelector((store) => store.blogs.blogs);
@@ -12,7 +12,8 @@ export default function App_desktop() {
   return (
     <div>
       desktop
-      {data?.map((blog) => {
+      <Register />
+      {/* {data?.map((blog) => {
         return (
           <div className="blog" key={blog.bid}>
             <h2>{blog.title}</h2>
@@ -20,7 +21,7 @@ export default function App_desktop() {
             <p>{blog.body}</p>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 }
