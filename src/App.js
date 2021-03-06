@@ -1,8 +1,11 @@
-import App_mobile from "./App.mobile";
-import App_desktop from "./App.desktop";
+import App_mobile from "./Root/App.mobile";
+import App_desktop from "./Root/App.desktop";
+import axios from 'axios'
 
 export default function App() {
   //Entry point for this web app
+
+  axios.defaults.withCredentials = true;
 
   /*
     Firstly fetching a variable from the browser's navigator object

@@ -1,16 +1,17 @@
-import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function Home() {
-  const { arg } = useParams();
+
+  const handleclick = (e)=>{
+      e.preventDefault();
+      fetch("http://127.0.0.1:8000/users")
+      .then(res=>res.json())
+      .then(data => console.log(data))
+      .catch(e => console.log(e))
+  }
   return (
     <div className="home">
-      {
-        {
-          yadav: <div>yadav</div>,
-          pandey: <div>pandey</div>,
-          haha: <div>haha</div>
-        }[arg]
-      }
+      <button onClick={handleclick}></button>
     </div>
   );
 }
