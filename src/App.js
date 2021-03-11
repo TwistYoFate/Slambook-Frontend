@@ -1,6 +1,8 @@
+import styles from "./styles.css"
 import App_mobile from "./Root/App.mobile";
 import App_desktop from "./Root/App.desktop";
 import axios from 'axios'
+import { Container } from "@material-ui/core";
 
 export default function App() {
   //Entry point for this web app
@@ -19,6 +21,8 @@ export default function App() {
     for the mobile or desktop
   */
   return (
-    <div className="App">{isMobile ? <App_mobile /> : <App_desktop />}</div>
+    <div className="App" >
+      {isMobile ? <App_mobile /> : <App_desktop />}
+    </div>
   );
 }
