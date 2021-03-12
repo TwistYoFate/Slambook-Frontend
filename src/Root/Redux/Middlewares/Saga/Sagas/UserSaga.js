@@ -17,3 +17,5 @@ function* UserWorker({ payload }) {
 export default function* UserWatcher() {
   yield takeLatest(Actions.UserActions.REGISTER_USER_TO_DB, UserWorker);
 }
+
+

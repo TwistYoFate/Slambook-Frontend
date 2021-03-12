@@ -27,10 +27,10 @@ function Intro() {
     const classes = useStyles()
     return (
             <Grid container xs={12} className={classes.intro} spacing={3}>
-                <Grid item sm={6} className={classes.leftIntro}>
+                <Grid item sm={7} className={classes.leftIntro}>
                     <LeftIntro />
                 </Grid>
-                <Grid item sm={6}>
+                <Grid item sm={5}>
                     <Box variant="div" className={classes.rightIntro}>
                     </Box>
                 </Grid>

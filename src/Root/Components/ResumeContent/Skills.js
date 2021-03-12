@@ -28,20 +28,20 @@ function Skills() {
             </Grid>
             <Grid item container>
                 <Grid item sm={4} xs={12}>
-                    <Typography>
+                    <Typography align="left">
                     Languages                    
                     </Typography>
                 </Grid>
                 <Grid item sm={8} xs={12} >
                     <Typography align="left">
-                    Python,Javascript,C/C++                    
+                    Python, Javascript, C/C++                    
                     </Typography>
                 </Grid>
             </Grid>
 
             <Grid item container>
                 <Grid item sm={4} xs={12}>
-                    <Typography>
+                    <Typography align="left">
                     Front End                     
                     </Typography>
                 </Grid>
@@ -54,7 +54,7 @@ function Skills() {
 
             <Grid item container>
                 <Grid item sm={4} xs={12}>
-                    <Typography>
+                    <Typography align="left">
                     Designing                    
                     </Typography>
                 </Grid>
