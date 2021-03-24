@@ -7,7 +7,7 @@ import AllBlogs from '../Components/AllBlogs'
 import BlogDetail from '../Components/BlogDetail'
 
 function Home() {
-    const {pm1} = useParams()
+    const {pm1,pm2=null} = useParams()
     return (
         <div className="home">
             <Navbar_Home />
@@ -16,7 +16,8 @@ function Home() {
                     home:<AllBlogs />,
                     login:<Login />,
                     register:<Register />,
-                    blogdetail:<BlogDetail />
+                    blogdetail:<BlogDetail />,
+                    // dash:<Dash pm2={pm2?"default":pm2}/>
                 }[pm1]
             }
         </div>

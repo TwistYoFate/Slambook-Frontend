@@ -7,9 +7,10 @@ import Actions from "../../Root/Redux/Actions/Actions";
   Route : /auth/register
 */
 function Register (){
-  const [name, setName] = useState();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
-  const [handle, setHandle] = useState();
+  const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [user, setUser] = useState();
 
@@ -18,11 +19,11 @@ function Register (){
   const onSubmitHandle = (e) => {
     e.preventDefault();
     setUser({
-      uid: 2,
-      name: name,
+      firstName: firstName,
+      lastName: lastName,
       email: email,
+      username: username,
       password: password,
-      handle: handle
     });
   };
 
@@ -36,11 +37,20 @@ function Register (){
       <form onSubmit={onSubmitHandle}>
         <input
           type="text"
-          id="name"
+          id="firstName"
           required
-          placeholder="Name"
+          placeholder="First Name"
           onChange={(e) => {
-            setName(e.target.value);
+            setFirstName(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          id="lastName"
+          required
+          placeholder="Last Name"
+          onChange={(e) => {
+            setLastName(e.target.value);
           }}
         />
         <input
@@ -54,11 +64,11 @@ function Register (){
         />
         <input
           type="text"
-          id="handle"
+          id="username"
           required
-          placeholder="Handle Name"
+          placeholder="Username"
           onChange={(e) => {
-            setHandle(e.target.value);
+            setUsername(e.target.value);
           }}
         />
         <input
@@ -72,7 +82,7 @@ function Register (){
         />
         <button>Register</button>
       </form>
-      <div>{name}</div>
+      <div>{firstName}</div>
     </div>
   );
 };

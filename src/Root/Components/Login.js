@@ -4,11 +4,12 @@ import Actions from "../../Root/Redux/Actions/Actions";
 
 /*
   This component is for authorization
-  Route : /auth/Login
+  Route : /auth/login
 */
 function Login (){
-  const [name, setName] = useState();
+  const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const [sessionLength, setSessionLength] = useState(0.5);
   const [user, setUser] = useState();
 
   const dispatch = useDispatch();
@@ -16,14 +17,15 @@ function Login (){
   const onSubmitHandle = (e) => {
     e.preventDefault();
     setUser({
-      name: name,
+      username: username,
       password: password,
+      sessionLength:sessionLength,
     });
   };
 
   useEffect(() => {
-    dispatch({ type: Actions.UserActions.GET_ONE_USER_FROM_DB, payload: user });
-  }, [dispatch]);
+    dispatch({ type: Actions.UserActions.LOGIN_USER, payload: user });
+  }, [user]);
 
   return (
     <div className="Login">
@@ -31,11 +33,11 @@ function Login (){
       <form onSubmit={onSubmitHandle}>
         <input
           type="text"
-          id="name"
+          id="username"
           required
-          placeholder="Name"
+          placeholder="Username"
           onChange={(e) => {
-            setName(e.target.value);
+            setUsername(e.target.value);
           }}
         />
         <input
@@ -47,9 +49,17 @@ function Login (){
             setPassword(e.target.value);
           }}
         />
+        <input
+          type="text"
+          id="sessionLength"
+          placeholder="Time duration for staying logged in. (hours)"
+          onChange={(e) => {
+            setSessionLength(e.target.value);
+          }}
+        />
         <button>Login</button>
       </form>
-      <div>{name}</div>
+      <div>{username}</div>
     </div>
   );
 };
