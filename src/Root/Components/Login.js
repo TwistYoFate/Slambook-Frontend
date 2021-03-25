@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Actions from "../../Root/Redux/Actions/Actions";
-
+import {Redirect} from 'react-router-dom';
 /*
   This component is for authorization
   Route : /auth/login
@@ -11,6 +11,7 @@ function Login (){
   const [password, setPassword] = useState();
   const [sessionLength, setSessionLength] = useState(0.5);
   const [user, setUser] = useState();
+  const [redirectToDash,setRedirectToDash] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -21,6 +22,7 @@ function Login (){
       password: password,
       sessionLength:sessionLength,
     });
+    setRedirectToDash(true);
   };
 
   useEffect(() => {
@@ -59,7 +61,11 @@ function Login (){
         />
         <button>Login</button>
       </form>
-      <div>{username}</div>
+      <div>
+        {
+          redirectToDash?<Redirect to="/slambook/dash/default"/>:null
+        }
+      </div>
     </div>
   );
 };

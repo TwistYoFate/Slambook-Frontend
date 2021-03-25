@@ -5,7 +5,8 @@ import UserWatchers from './Sagas/UserSaga'
 
 export default function* Watchers(){
     yield all([
-        fork(BlogWatcher),
+        fork(BlogWatcher.BlogAllWatcher),
+        fork(BlogWatcher.BlogLikeWatcher),
         fork(UserWatchers.UserRegisterWatcher),
         fork(UserWatchers.UserLoginWatcher),
     ]

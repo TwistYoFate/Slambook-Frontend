@@ -4,6 +4,7 @@ import BlogCard from './BlogCard'
 
 import {Link} from 'react-router-dom'
 import Actions from '../Redux/Actions/Actions'
+import MediaCard from '../Utils/MediaCard'
 
 function AllBlogs() {
     // const blogs=[
@@ -31,13 +32,15 @@ function AllBlogs() {
         <div>
             {
                 
-                blogs?.map(blog=>{
+                !blogs?<p>Loading...</p>:blogs.map(blog=>{
+                    console.log("idhar  ",blog)
                     return(
-                        <div className="preview" key={blog.id}>
+                        <div className="preview" key={blog._id}>
                             <Link to={{
                                 pathname:"/slambook/blogdetail",
-                                state:{blog:blog}}}>
-                            <BlogCard blog={blog}/>
+                                state:{blog:blog}}}
+                                style={{textDecoration:0}}>
+                            <MediaCard blog={blog} />
                             </Link>
                         </div>
                     )

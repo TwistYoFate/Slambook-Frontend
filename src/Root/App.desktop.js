@@ -6,9 +6,16 @@ import {Route, Switch} from 'react-router-dom'
 import Home from "./Routes/Home";
 import Resume from "./Routes/Resume";
 import Test from "./Utils/Test";
+import Dash from "./Routes/Dash";
 
 
 export default function App_desktop() {
+
+  //Call all blogs before the routes are rendered
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({type:Actions.BlogActions.GET_ALL_BLOGS_FROM_DB})
+  }, [])
 
   return (
     <div className="container">
@@ -26,10 +33,11 @@ export default function App_desktop() {
           <Home />
         </Route>
 
-        {/* <Route path="/dash/:pm1">
-          {//dash
+        <Route exact path="/slambook/dash/:pm1">
+          {
+            <Dash />
           }
-        </Route> */}
+        </Route>
 
       </Switch>
     </div>

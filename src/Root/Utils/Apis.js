@@ -23,6 +23,24 @@ async function post(url,payload,token=false){
     }
 }
 
+async function patch(url,payload,token=false){
+    try {
+        console.log("token in api ,",token)
+        return await fetch(url,{
+            method: 'PATCH',
+            headers:{
+                'Content-Type': 'application/json',
+                Authorization: token?token:null,
+            },
+            body: JSON.stringify({
+                ...payload
+            })
+        }).then(res=>{return res.json()}).then(data=>{return data});
+    } catch (error) {
+        console.log("Fetch Error : ",error);
+    }
+}
+
 export default {
-    get,post
+    get,post,patch
 }

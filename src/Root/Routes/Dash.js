@@ -1,8 +1,10 @@
 import React from 'react'
+import { useParams } from 'react-router'
 import AddBlog from '../Components/AddBlog'
 import MyBlogs from '../Components/MyBlogs'
 
-function Dash({pm2}) {
+function Dash() {
+    const {pm1} = useParams()
     return (
         <div>
             {
@@ -10,7 +12,7 @@ function Dash({pm2}) {
                     default:<MyBlogs />,
                     add:<AddBlog />,
                     
-                }[pm2]
+                }[pm1]
             }
         </div>
     )
