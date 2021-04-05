@@ -17,6 +17,22 @@ function BlogLikeRequest(payload){
   return Apis.patch("http://localhost:5000/blogs/likeUnlike",payload,token); 
 }
 
+function BlogCreateRequest(payload){
+  console.log("BlogCreateRequest ,",payload);
+  let tok = localStorage.getItem('token');
+  const token = `Bearer ${tok.substring(1,tok.length-1)}`;
+  console.log(token);
+  return Apis.post("http://localhost:5000/blogs/create",payload,token); 
+}
+
+function BlogDeleteRequest(payload){
+  console.log("BlogDeleteRequest ,",payload);
+  let tok = localStorage.getItem('token');
+  const token = `Bearer ${tok.substring(1,tok.length-1)}`;
+  console.log(token);
+  return Apis.Delete("http://localhost:5000/blogs/delete",payload,token); 
+}
+
 //Worker
 
 function* BlogAllWorker(action) {
@@ -50,6 +66,37 @@ function* BlogLikeWorker(action) {
   }
 }
 
+function* BlogCreateWorker(action) {
+  try {
+    console.log(action.payload);
+    const data = yield call(BlogCreateRequest,action.payload);
+    if(data.isSuccessful){
+      yield put({
+        type: Actions.BlogActions.SAVE_BLOG_TO_STORE,
+        payload: data.payload
+      });
+    }
+    
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function* BlogDeleteWorker(action) {
+  try {
+    console.log(action.payload);
+    const data = yield call(BlogDeleteRequest,action.payload);
+    if(data.isSuccessful){
+      yield put({
+        type: Actions.BlogActions.DELETE_BLOG_FROM_STORE,
+        payload: action.payload
+      });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 //Watcher
 
 function* BlogAllWatcher() {
@@ -61,7 +108,17 @@ function* BlogLikeWatcher() {
   yield takeLatest(Actions.BlogActions.SAVE_LIKE_TO_DB, BlogLikeWorker);
 }
 
+function* BlogCreateWatcher() {
+  yield takeLatest(Actions.BlogActions.SAVE_BLOG_TO_DB, BlogCreateWorker);
+}
+
+function* BlogDeleteWatcher() {
+  yield takeLatest(Actions.BlogActions.DELETE_BLOG_FROM_DB, BlogDeleteWorker);
+}
+
 export default {
   BlogAllWatcher,
-  BlogLikeWatcher
+  BlogLikeWatcher,
+  BlogCreateWatcher,
+  BlogDeleteWatcher,
 }

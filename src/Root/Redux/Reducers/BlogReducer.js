@@ -13,6 +13,16 @@ export default function BlogReducer(state = initialState, action) {
       };
     case Actions.BlogActions.SAVE_LIKE_TO_STORE:
       return blogUpdate(state,action);
+    case Actions.BlogActions.DELETE_BLOG_FROM_STORE:
+      return {
+        ...state,
+        blogs:[...state.blogs.filter(blog=>blog._id!=payload.id)]
+      };
+    case Actions.BlogActions.SAVE_BLOG_TO_STORE:
+      return {
+        ...state,
+        blogs: [...state.blogs,action.payload.blog]
+      };
     default:
       return state;
   }

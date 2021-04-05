@@ -1,9 +1,10 @@
-import { AppBar, IconButton, makeStyles, Typography } from '@material-ui/core'
+import { AppBar, Button, IconButton, makeStyles, Typography } from '@material-ui/core'
 import  ToolBar  from '@material-ui/core/Toolbar'
 import  {Grid}  from '@material-ui/core'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import MenuIcon from '@material-ui/icons/Menu'
+import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles({
   AppBar:{
@@ -18,28 +19,47 @@ const useStyles = makeStyles({
 })
 
 function Navbar_Home() {
+  const {user} = useSelector(state => state.user)
+  const [isTokenThere, setIsTokenThere] = useState(false)
+  useEffect(() => {
+    setIsTokenThere(localStorage.getItem("token"));
+  })
+
   const classes = useStyles()
     return (
       <AppBar className={classes.AppBar}>
         <ToolBar>
           <Grid container direction="row">
 
-          <Grid item xs={4} md={4}>
+          <Grid item xs={6} md={6}>
             <Typography>
               <h2>Slambook</h2>
             </Typography>
           </Grid>
 
           <Grid item container xs={6} md={6}>
-               <Grid container spacing={4} className={classes.LinkItems} >
+               <Grid container spacing={1} className={classes.LinkItems} >
                   <Grid item>
-                  <Link to="/slambook/home" className={classes.Links}>Feed</Link>
+                  <Link to="/slambook/home" className={classes.Links}><Button>Feed</Button></Link>
                   </Grid>
+                  {
+                    !user?
+                    <>
+                    <Grid item>
+                    <Link to="/slambook/login" className={classes.Links}><Button>Login</Button></Link>
+                    </Grid>
+                    <Grid item>
+                    <Link to="/slambook/register" className={classes.Links}><Button>Register</Button></Link>            
+                    </Grid>
+                    </>
+                    :
+                    null  
+                  }
+                  
                   <Grid item>
-                  <Link to="/slambook/login" className={classes.Links}>Login</Link>
-                  </Grid>
-                  <Grid item>
-                  <Link to="/slambook/register" className={classes.Links}>Register</Link>            
+                    {
+                      isTokenThere?<Link to="/slambook/dash/default" className={classes.Links}><Button>Dashboard</Button></Link>:null            
+                    }
                   </Grid>
               </Grid>
           </Grid>

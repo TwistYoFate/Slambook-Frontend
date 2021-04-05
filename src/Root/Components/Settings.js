@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router";
 import Actions from "../../Root/Redux/Actions/Actions";
 import { CustomButton, CustomTextField } from "../Utils/CustomUI";
+import Loader from "../Utils/Loader";
 
-/*
-  This component is for authorization
-  Route : /auth/register
-*/
-function Register (){
+function Settings() {
+  const {user} = useSelector(state => state.user)
+
   const [redirectToLogin, setRedirectToLogin] = useState(false)
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  const [user, setUser] = useState();
+  const [updateUser, setUpdateUser] = useState();
 
   const dispatch = useDispatch();
 
   const onSubmitHandle = (e) => {
     e.preventDefault();
-    setUser({
+    console.log(user)
+    setUpdateUser({
       firstName: firstName,
       lastName: lastName,
       email: email,
@@ -33,20 +33,22 @@ function Register (){
 
   useEffect(() => {
     console.log(user)
-    dispatch({ type: Actions.UserActions.REGISTER_USER_TO_DB, payload: user });
-  }, [user]);
+    dispatch({ type: Actions.UserActions.UPDATE_USER_TO_DB, payload: updateUser });
+  }, [updateUser]);
 
   return (
     <div className="register">
-      <h1>Register</h1>
-      <form onSubmit={onSubmitHandle}>
+      <h1>Update your profile</h1>
+      <br />
+      <h3>Fill the details that you want to update.</h3>
+      <form id="update-form" onSubmit={onSubmitHandle}>
         <CustomTextField
           // type="text"
           id="firstName"
           variant="outlined"
-          required
-          label="First Name"
-          placeholder="First Name"
+          
+        //   label="First Name"
+          placeholder={user.firstName}
           onChange={(e) => {
             setFirstName(e.target.value);
           }}
@@ -55,10 +57,10 @@ function Register (){
         <CustomTextField
           // type="text"
           id="lastName"
-          required 
+           
           variant="outlined" 
           label="Last Name"
-          placeholder="Last Name"
+          placeholder={user.lastName}
           onChange={(e) => {
             setLastName(e.target.value);
           }}
@@ -67,10 +69,10 @@ function Register (){
         <CustomTextField
           type="email"
           id="email"
-          required 
+           
           variant="outlined" 
           label="Email"
-          placeholder="Email"
+          placeholder={user.email}
           onChange={(e) => {
             setEmail(e.target.value);
           }}
@@ -79,10 +81,9 @@ function Register (){
         <CustomTextField
           // type="text"
           id="username"
-          required 
-          variant="outlined" 
-          label="Username"
-          placeholder="Username"
+          disabled="true" 
+          variant="outlined"
+          label={user.username}
           onChange={(e) => {
             setUsername(e.target.value);
           }}
@@ -91,7 +92,7 @@ function Register (){
         <CustomTextField
           type="password"
           id="password"
-          required 
+           
           variant="outlined" 
           label="Password"
           placeholder="Password"
@@ -100,16 +101,16 @@ function Register (){
           }}
         />
         <br /><br />
-        <CustomButton type="submit">Register</CustomButton>
+        <CustomButton type="submit" form="update-form">Update</CustomButton>
         {/* <button>Register</button> */}
       </form>
       <div>
         {
-          redirectToLogin?<Redirect to="/slambook/login" />:null
+          redirectToLogin?<Loader url="/slambook/login" />:null
         }
       </div>
     </div>
   );
-};
+}
 
-export default Register;
+export default Settings

@@ -1,12 +1,27 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Actions from "../../Root/Redux/Actions/Actions";
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect, useHistory} from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import { Button } from "@material-ui/core";
+import { CustomButton, CustomTextField } from "../Utils/CustomUI";
 /*
   This component is for authorization
   Route : /auth/login
 */
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
+
 function Login (){
+  const classes = useStyles();
+  const history = useHistory()
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [sessionLength, setSessionLength] = useState(0.5);
@@ -33,17 +48,28 @@ function Login (){
     <div className="Login">
       <h1>Login</h1>
       <form onSubmit={onSubmitHandle}>
-        <input
-          type="text"
-          id="username"
+        <CustomTextField
           required
+          // id="outlined-required"
+          label="Username"
+          // defaultValue="Username"
+          variant="outlined"
+          // type="text"
+          id="username"
+          // required
           placeholder="Username"
           onChange={(e) => {
             setUsername(e.target.value);
           }}
         />
-        <input
-          type="password"
+        <br /><br />
+        <CustomTextField
+        //  id="outlined-password-input"
+         label="Password"
+         type="password"
+         autoComplete="current-password"
+         variant="outlined"
+          // type="password"
           id="password"
           required
           placeholder="Password"
@@ -51,15 +77,22 @@ function Login (){
             setPassword(e.target.value);
           }}
         />
-        <input
-          type="text"
+        <br /><br />
+        <CustomTextField
+          type="number"
+          step="0.1"
           id="sessionLength"
-          placeholder="Time duration for staying logged in. (hours)"
+          label="Session Length (hrs)"
+          placeholder="Session Length (hrs)"
+          variant="outlined"
           onChange={(e) => {
             setSessionLength(e.target.value);
           }}
         />
-        <button>Login</button>
+        <br /><br />
+        {/* <Button variant="Primary">Login</Button> */}
+        <Link to="/slambook/reset"><p>Forgot Password</p></Link>
+        <CustomButton type="submit">Login</CustomButton>
       </form>
       <div>
         {

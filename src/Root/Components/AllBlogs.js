@@ -5,6 +5,7 @@ import BlogCard from './BlogCard'
 import {Link} from 'react-router-dom'
 import Actions from '../Redux/Actions/Actions'
 import MediaCard from '../Utils/MediaCard'
+import { Grid } from '@material-ui/core'
 
 function AllBlogs() {
     // const blogs=[
@@ -29,24 +30,19 @@ function AllBlogs() {
     }, [dispatch])
     const {blogs} = useSelector(state => state.blogs)
     return (
-        <div>
+        <Grid container direction="row" spacing={2}>
             {
                 
                 !blogs?<p>Loading...</p>:blogs.map(blog=>{
                     console.log("idhar  ",blog)
                     return(
-                        <div className="preview" key={blog._id}>
-                            <Link to={{
-                                pathname:"/slambook/blogdetail",
-                                state:{blog:blog}}}
-                                style={{textDecoration:0}}>
+                        <Grid item className="preview" key={blog._id}>
                             <MediaCard blog={blog} />
-                            </Link>
-                        </div>
+                        </Grid>
                     )
                 })
             }
-        </div>
+        </Grid>
     )
 }
 
