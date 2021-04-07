@@ -18,7 +18,7 @@ import ReactHTMLParser from 'react-html-parser'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    width: 345,
   },
   media: {
     height: 140,
@@ -51,7 +51,7 @@ export default function MediaCard({blog,allowDelete}) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={blog?.image?blog?.image:null}
+          image={blog.image?blog.image:'/default.jpg'}
           title={blog?.title}
         />
         <CardContent>

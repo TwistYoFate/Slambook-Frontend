@@ -4,7 +4,7 @@ import React from 'react'
 
 const useStyles = makeStyles({
     WorkExperience:{
-      paddingTop:"20%"
+      paddingTop:"5%"
     },
     title:{
         color:"#61eb85"

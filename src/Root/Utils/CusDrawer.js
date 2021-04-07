@@ -11,6 +11,8 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import {useEffect} from 'react'
 import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import Actions from '../Redux/Actions/Actions';
 
 //Mapping the Drawer Links to the actual route names i.e pm1
 const CURRENT_LINK_MAP = {
@@ -21,7 +23,7 @@ const CURRENT_LINK_MAP = {
   
   'Home':'/slambook/home',
   'My Blogs':'/slambook/dash/default',
-  'Create Blogs':'/slambook/dash/add',
+  'Create Blog':'/slambook/dash/add',
   'Settings':'/slambook/dash/settings',
   'Logout':'/slambook/home',
 }
@@ -51,12 +53,19 @@ const useStyles = makeStyles({
 export default function CustomDrawer({drawerState,setDrawerState,LIST_OF_LINKS,currentLink,setCurrentLink}) {
   const classes = useStyles();
   const [leftSide, setLeftSide] = React.useState(0)
+  const {user} = useSelector(state => state.user)
 
+  const dispatch = useDispatch()
   const history = useHistory()
 
   useEffect(() => {
     setLeftSide(setLeftSide^1);
   }, [drawerState])
+
+  function onLogoutHandle(){
+    localStorage.clear()
+    dispatch({type:Actions.UserActions.LOGOUT_USER});
+  }
 
   const toggleDrawer = (state) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -79,15 +88,32 @@ export default function CustomDrawer({drawerState,setDrawerState,LIST_OF_LINKS,c
         {
           LIST_OF_LINKS
         .map((text, index) => (
-          
+
           text===currentLink
           ?
-          (<ListItem button key={text} onClick={()=>{setCurrentLink(text);history.push(CURRENT_LINK_MAP[text])}} class={classes.activeLink}>
-            <ListItemText primary={text} />
+          (<ListItem button key={text} 
+          onClick={()=>{
+            setCurrentLink(text);
+            if(text==="Logout"){
+                onLogoutHandle()
+            }
+            history.push(CURRENT_LINK_MAP[text])}} class={classes.activeLink}>
+              {
+                text==="Dashboard"?(user?<ListItemText primary={text} />:null):<ListItemText primary={text} />
+              }
           </ListItem>)
           :
-          (<ListItem button key={text} onClick={()=>{setCurrentLink(text);history.push(CURRENT_LINK_MAP[text])}} >
-            <ListItemText primary={text} />
+          (<ListItem button key={text} 
+            onClick={()=>{
+            setCurrentLink(text);
+            if(text==="Logout"){
+              onLogoutHandle()
+            }
+            history.push(CURRENT_LINK_MAP[text])}
+          } >
+            {
+                text==="Dashboard"?(user?<ListItemText primary={text} />:null):<ListItemText primary={text} />
+              }
           </ListItem>)
           
           ))

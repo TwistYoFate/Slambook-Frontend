@@ -36,7 +36,7 @@ function AllBlogs() {
                 !blogs?<p>Loading...</p>:blogs.map(blog=>{
                     console.log("idhar  ",blog)
                     return(
-                        <Grid item className="preview" key={blog._id}>
+                        <Grid item className="preview" key={blog._id} xs={12} md={6}>
                             <MediaCard blog={blog} />
                         </Grid>
                     )

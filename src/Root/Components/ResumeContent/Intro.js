@@ -90,7 +90,7 @@ function LeftIntro(){
             <br/>
             <br/>
             Out of many things that I love doing Solving Problems, Coding and Playing Chess are among the latest.
-            What I believe from my experience and inputs from others that I am good both Creatively and Technically.
+            What I believe from my experience, and inputs from my peers is that I am good both Creatively and Technically.
             So if you want to work with me, do check out my resume below.
             </Typography>
             </Grid>

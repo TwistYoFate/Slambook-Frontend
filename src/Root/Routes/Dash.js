@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router'
 import AddBlog from '../Components/AddBlog'
 import MyBlogs from '../Components/MyBlogs'
-import {Grid, Hidden} from '@material-ui/core'
+import {AppBar, Grid, Hidden, Toolbar, Typography} from '@material-ui/core'
 import Navbar_Dash from '../Components/Navbar_Dash'
 import { useDispatch, useSelector } from 'react-redux'
 import Unauthorized from '../Components/Unauthorized'
 import Actions from '../Redux/Actions/Actions'
 import Settings from '../Components/Settings'
+
 
 //Hamburger
 import { IconButton } from '@material-ui/core'
@@ -17,6 +18,9 @@ import { makeStyles } from '@material-ui/styles'
 
 
 const useStyles = makeStyles({
+    AppBar:{
+        backgroundColor:"#61eb85",
+    },
     IconButton:{
         backgroundColor:"#61eb85",
         position:"fixed",
@@ -33,18 +37,22 @@ const useStyles = makeStyles({
         positin:"fixed",
         top:0,
         left:50
-    }
+    },
+    title:{
+        fontFamily: 'Permanent Marker, cursive',
+        // fontSize:"20px"
+        color:"black"
+      }
 })
 
 //Array of Links for Drawer
 const LIST_OF_LINKS=[
     'Home',
     'My Blogs',
-    'Create Blogs',
+    'Create Blog',
     'Settings',
     'Logout',
 ]
-
 
 
 
@@ -82,7 +90,18 @@ function Dash() {
                 user?<Grid container direction="column" spacing={10}>
                 <Grid item>
                     <Hidden smDown>
-                        <Navbar_Dash />
+                        <Navbar_Dash currentLink={currentLink} setCurrentLink={setCurrentLink} />
+                    </Hidden>
+                    <Hidden smUp>
+                        <AppBar className={classes.AppBar}>
+                            <Toolbar>
+                            <Grid item xs={12}>
+                                <Typography>
+                                    <h2 className={classes.title}>Slambook</h2>
+                                </Typography>
+                            </Grid>
+                            </Toolbar>
+                        </AppBar>
                     </Hidden>
                 </Grid>
 

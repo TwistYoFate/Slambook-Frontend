@@ -43,7 +43,7 @@ function Resume() {
                 <Intro />
                 </Grid>
 
-                <CustomDrawer />
+                {/* <CustomDrawer /> */}
 
                 <Grid item>
                 <Biodata currentTopic={currentTopic}/>

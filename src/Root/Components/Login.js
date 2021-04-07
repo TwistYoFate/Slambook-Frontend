@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import Actions from "../../Root/Redux/Actions/Actions";
 import {Link, Redirect, useHistory} from 'react-router-dom';
@@ -28,6 +28,9 @@ function Login (){
   const [user, setUser] = useState();
   const [redirectToDash,setRedirectToDash] = useState(false);
 
+  // To stop the useEffect running on first render
+  const initialRender = useRef(true);
+
   const dispatch = useDispatch();
 
   const onSubmitHandle = (e) => {
@@ -41,7 +44,11 @@ function Login (){
   };
 
   useEffect(() => {
-    dispatch({ type: Actions.UserActions.LOGIN_USER, payload: user });
+    if (initialRender.current) {
+      initialRender.current = false;
+    } else {
+      dispatch({ type: Actions.UserActions.LOGIN_USER, payload: user });
+    }
   }, [user]);
 
   return (

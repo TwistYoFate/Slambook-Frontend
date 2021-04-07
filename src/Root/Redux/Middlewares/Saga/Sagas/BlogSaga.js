@@ -2,11 +2,12 @@ import { call,put,takeLatest } from "redux-saga/effects";
 import Actions from "../../../Actions/Actions";
 import axios from 'axios'
 import Apis from "../../../../Utils/Apis";
+import config from '../../../../../config'
 
 //Request
 
 function BlogAllRequest(){
-  return Apis.get("http://localhost:5000/blogs"); 
+  return Apis.get(config.SERVER_BASE_URL + "/blogs"); 
 }
 
 function BlogLikeRequest(payload){
@@ -14,7 +15,7 @@ function BlogLikeRequest(payload){
   let tok = localStorage.getItem('token');
   const token = `Bearer ${tok.substring(1,tok.length-1)}`;
   console.log(token);
-  return Apis.patch("http://localhost:5000/blogs/likeUnlike",payload,token); 
+  return Apis.patch(config.SERVER_BASE_URL + "/blogs/likeUnlike",payload,token); 
 }
 
 function BlogCreateRequest(payload){
@@ -22,7 +23,7 @@ function BlogCreateRequest(payload){
   let tok = localStorage.getItem('token');
   const token = `Bearer ${tok.substring(1,tok.length-1)}`;
   console.log(token);
-  return Apis.post("http://localhost:5000/blogs/create",payload,token); 
+  return Apis.post(config.SERVER_BASE_URL + "/blogs/create",payload,token); 
 }
 
 function BlogDeleteRequest(payload){
@@ -30,7 +31,7 @@ function BlogDeleteRequest(payload){
   let tok = localStorage.getItem('token');
   const token = `Bearer ${tok.substring(1,tok.length-1)}`;
   console.log(token);
-  return Apis.Delete("http://localhost:5000/blogs/delete",payload,token); 
+  return Apis.Delete(config.SERVER_BASE_URL + "/blogs/delete",payload,token); 
 }
 
 //Worker

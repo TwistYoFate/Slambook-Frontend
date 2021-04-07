@@ -5,9 +5,9 @@ import { useHistory } from 'react-router'
 import Actions from '../Redux/Actions/Actions'
 import MediaCard from '../Utils/MediaCard'
 
-function MyBlogs({user}) {
+function MyBlogs() {
     const {blogs} = useSelector(state => state.blogs)
-    // const {user} = useSelector(state => state.user)
+    const {user} = useSelector(state => state.user)
     const [myBlogs,setMyBlogs] = React.useState()
     // const history = useHistory();
     

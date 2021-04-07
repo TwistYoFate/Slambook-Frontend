@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles({
     education:{
-      paddingTop:"20%"
+      paddingTop:"10%"
     },
     title:{
         color:"#61eb85"

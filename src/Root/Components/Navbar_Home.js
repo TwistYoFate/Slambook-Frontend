@@ -16,9 +16,14 @@ const useStyles = makeStyles({
   LinkItems:{
     alignContent:"center",
   },
+  title:{
+    fontFamily: 'Permanent Marker, cursive',
+    // fontSize:"20px"
+    color:"black"
+  }
 })
 
-function Navbar_Home() {
+function Navbar_Home({currentLink, setCurrentLink}) {
   const {user} = useSelector(state => state.user)
   const [isTokenThere, setIsTokenThere] = useState(false)
   useEffect(() => {
@@ -33,23 +38,38 @@ function Navbar_Home() {
 
           <Grid item xs={6} md={6}>
             <Typography>
-              <h2>Slambook</h2>
+              <h2 className={classes.title}>Slambook</h2>
             </Typography>
           </Grid>
 
           <Grid item container xs={6} md={6}>
                <Grid container spacing={1} className={classes.LinkItems} >
                   <Grid item>
-                  <Link to="/slambook/home" className={classes.Links}><Button>Feed</Button></Link>
+                    {
+                      currentLink==="Feed"?
+                      <Link to="/slambook/home" className={classes.Links}><Button style={{backgroundColor:"white"}}>Feed</Button></Link>
+                      :
+                      <Link to="/slambook/home" onClick={()=>setCurrentLink("Feed")} className={classes.Links}><Button>Feed</Button></Link>
+                    }
                   </Grid>
                   {
                     !user?
                     <>
                     <Grid item>
-                    <Link to="/slambook/login" className={classes.Links}><Button>Login</Button></Link>
+                      {
+                        currentLink==="Login"?
+                        <Link to="/slambook/login" className={classes.Links} ><Button style={{backgroundColor:"white"}}>Login</Button></Link>
+                        :
+                        <Link to="/slambook/login" onClick={()=>setCurrentLink("Login")} className={classes.Links}><Button>Login</Button></Link>
+                      }
                     </Grid>
                     <Grid item>
-                    <Link to="/slambook/register" className={classes.Links}><Button>Register</Button></Link>            
+                      {
+                        currentLink==="Register"?
+                        <Link to="/slambook/register" className={classes.Links}><Button style={{backgroundColor:"white"}}>Register</Button></Link>           
+                        : 
+                        <Link to="/slambook/register" onClick={()=>setCurrentLink("Register")} className={classes.Links}><Button>Register</Button></Link>            
+                      }
                     </Grid>
                     </>
                     :

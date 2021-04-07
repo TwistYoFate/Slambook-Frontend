@@ -6,29 +6,29 @@ import api from "../../../../Utils/Apis";
 
 function UserRegisterRequest(payload){
   console.log("request , ",payload)
-  return api.post("http://localhost:5000/auth/signup",payload);
+  return api.post(config.SERVER_BASE_URL + "/auth/signup",payload);
 }
 
 function UserLoginRequest(payload){
-  return api.post("http://localhost:5000/auth/login",payload);
+  return api.post(config.SERVER_BASE_URL + "/auth/login",payload);
 }
 
 function UserReloginRequest(){
   let tok = localStorage.getItem('token');
   const token = `Bearer ${tok.substring(1,tok.length-1)}`;
-  return api.get("http://localhost:5000/auth/relogin",token);
+  return api.get(config.SERVER_BASE_URL + "/auth/relogin",token);
 }
 
 function UserUpdateRequest(payload){
   console.log("update , ",payload)
   let tok = localStorage.getItem('token');
   const token = `Bearer ${tok.substring(1,tok.length-1)}`;
-  return api.patch("http://localhost:5000/auth/update",payload,token);
+  return api.patch(config.SERVER_BASE_URL + "/auth/update",payload,token);
 }
 
 function* UserPasswordResetRequest(payload){
   console.log("reset , ",payload)
-  return api.post("http://localhost:5000/auth/reset",payload);
+  return api.post(config.SERVER_BASE_URL + "/auth/reset",payload);
 }
 
 //Worker
@@ -64,7 +64,8 @@ function* UserLoginWorker({ payload }) {
       })
     }
     else{
-      throw "Wrong Credentials";
+      window.location.replace("/slambook/login")
+      alert("Wrong Credentials");
     }
   } catch (e) {
     console.log(e);
@@ -74,7 +75,7 @@ function* UserLoginWorker({ payload }) {
 function* UserReloginWorker() {
   try {
     const data = yield call(UserReloginRequest);
-    console.log("haha");
+    // console.log("haha");
     console.log(data);
     if(data.isSuccessful){
       //save token in localStorage

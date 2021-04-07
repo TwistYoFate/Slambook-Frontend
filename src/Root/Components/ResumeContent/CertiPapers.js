@@ -4,7 +4,7 @@ import React from 'react'
 
 const useStyles = makeStyles({
     CertiPapers:{
-      paddingTop:"5%"
+      paddingTop:"10%"
     },
     certi:{
         height:"30%",
@@ -24,13 +24,13 @@ function CertiPapers() {
 
         <Grid container>
         <Grid item xs={0} sm={1}/>
-        <Grid item container xs={12} sm={10} spacing={3} direction="column" className={classes.CertiPapers}>
+        <Grid item container xs={12} sm={8} spacing={3} direction="column" className={classes.CertiPapers}>
             <Grid item container>
                 <Typography variant="h4" className={classes.title}>
                 Certificates/Papers
                 </Typography>
             </Grid>
-            <Grid item container>
+            <Grid item container direction="column" spacing={1}>
                 {/* <Grid item xs={12}>
                     <Typography variant="h5" align="left">
                     Codechef                    
@@ -38,7 +38,22 @@ function CertiPapers() {
                 </Grid> */}
                 <Grid item xs={12} >
                     <Paper elevation={3} variant="outlined">
-                        <img src="./codechef-certi-1.png" height="50%" width="100%"/>
+                        <img src="./certis/springer.jpg" height="50%" width="100%"/>
+                    </Paper>
+                </Grid>
+                <Grid item xs={12} >
+                    <Paper elevation={3} variant="outlined">
+                        <img src="./certis/os-py.png" height="50%" width="100%"/>
+                    </Paper>
+                </Grid>
+                <Grid item xs={12} >
+                    <Paper elevation={3} variant="outlined">
+                        <img src="./certis/crash-py.png" height="50%" width="100%"/>
+                    </Paper>
+                </Grid>
+                <Grid item xs={12} >
+                    <Paper elevation={3} variant="outlined">
+                        <img src="./certis/codechef-certi-1.png" height="50%" width="100%"/>
                     </Paper>
                 </Grid>
             </Grid>

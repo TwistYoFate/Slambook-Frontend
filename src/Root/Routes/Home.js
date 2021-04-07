@@ -5,10 +5,11 @@ import Register from '../Components/Register'
 import Login from '../Components/Login'
 import AllBlogs from '../Components/AllBlogs'
 import BlogDetail from '../Components/BlogDetail'
-import { Grid, Hidden} from '@material-ui/core'
+import { AppBar, Grid, Hidden, Toolbar, Typography} from '@material-ui/core'
 import { useSelector } from 'react-redux'
 import ResetPassword from '../Components/ResetPassword'
 import Hamburger from '../Utils/Hamburger'
+
 
 //Hamburger
 import { IconButton } from '@material-ui/core'
@@ -18,6 +19,9 @@ import { makeStyles } from '@material-ui/styles'
 
 
 const useStyles = makeStyles({
+    AppBar:{
+        backgroundColor:"#61eb85",
+    },
     IconButton:{
         backgroundColor:"#61eb85",
         position:"fixed",
@@ -34,7 +38,13 @@ const useStyles = makeStyles({
         positin:"fixed",
         top:0,
         left:50
+    },
+    title:{
+        fontFamily: 'Permanent Marker, cursive',
+        // fontSize:"20px"
+        color:"black"
     }
+    
 })
 
 //Array of Links for Drawer
@@ -61,7 +71,7 @@ function Home() {
         <div className="home">
             {
             !drawerState?
-            <Hidden mdUp>
+            <Hidden smUp>
             <h2 className={classes.header}>{currentLink}</h2>
             <IconButton onClick={()=>{setDrawerState(drawerState^1)}} className={classes.IconButton}>
                 <MenuIcon xs={1} sm={0} className={classes.MenuIcon}/>
@@ -72,8 +82,19 @@ function Home() {
             }
             <Grid container direction="column" spacing={10}>
                 <Grid item>
-                    <Hidden mdDown>
-                        <Navbar_Home />
+                    <Hidden smDown>
+                        <Navbar_Home currentLink={currentLink} setCurrentLink={setCurrentLink}/>
+                    </Hidden>
+                    <Hidden smUp>
+                        <AppBar className={classes.AppBar}>
+                            <Toolbar>
+                            <Grid item xs={12}>
+                                <Typography>
+                                    <h2 className={classes.title}>Slambook</h2>
+                                </Typography>
+                            </Grid>
+                            </Toolbar>
+                        </AppBar>
                     </Hidden>
                 </Grid>
 

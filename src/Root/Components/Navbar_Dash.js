@@ -18,9 +18,14 @@ const useStyles = makeStyles({
   center:{
     alignContent:"center",
   },
+  title:{
+    fontFamily: 'Permanent Marker, cursive',
+    // fontSize:"20px"
+    color:"black"
+  }
 })
 
-function Navbar_Dash() {
+function Navbar_Dash({currentLink,setCurrentLink}) {
 
   
   const [redirectToHome, setRedirectToHome] = React.useState(false)
@@ -45,26 +50,51 @@ function Navbar_Dash() {
 
           <Grid item xs={6} md={6}>
             <Typography>
-              <h2>Slambook</h2>
+              <h2 className={classes.title}>Slambook</h2>
             </Typography>
           </Grid>
 
           <Grid item container xs={6} md={6}>
                <Grid container spacing={1} className={classes.center} >
                   <Grid item>
-                  <Link to="/slambook/home" className={classes.Links}><Button>Home</Button></Link>
+                    {
+                      currentLink==="Home"?
+                      <Link to="/slambook/home" className={classes.Links}><Button style={{backgroundColor:"white"}} >Home</Button></Link>
+                      :
+                      <Link to="/slambook/home" onClick={()=>setCurrentLink("Home")} className={classes.Links}><Button>Home</Button></Link>
+                    }
                   </Grid>
                   <Grid item>
-                  <Link to="/slambook/dash/default" className={classes.Links}><Button>My Blogs</Button></Link>
+                    {
+                      currentLink==="My Blogs"?
+                      <Link to="/slambook/dash/default" className={classes.Links}><Button style={{backgroundColor:"white"}} >My Blogs</Button></Link>
+                      :
+                      <Link to="/slambook/dash/default" onClick={()=>setCurrentLink("My Blogs")} className={classes.Links}><Button>My Blogs</Button></Link>
+                    }
                   </Grid>
                   <Grid item>
-                  <Link to="/slambook/dash/add" className={classes.Links}><Button>Create Blog</Button></Link>
+                    {
+                      currentLink==="Create Blog"?
+                      <Link to="/slambook/dash/add" className={classes.Links}><Button style={{backgroundColor:"white"}}>Create Blog</Button></Link>
+                      :
+                      <Link to="/slambook/dash/add" onClick={()=>setCurrentLink("Create Blog")} className={classes.Links}><Button>Create Blog</Button></Link>
+                    }
                   </Grid>
                   <Grid item>
-                  <Link to="/slambook/dash/settings" className={classes.Links}><Button>Settings</Button></Link>            
+                    {
+                      currentLink==="Settings"?
+                      <Link to="/slambook/dash/settings" className={classes.Links}><Button style={{backgroundColor:"white"}}>Settings</Button></Link>            
+                      :
+                      <Link to="/slambook/dash/settings" onClick={()=>setCurrentLink("Settings")} className={classes.Links}><Button>Settings</Button></Link>            
+                    }
                   </Grid>
                   <Grid item>
-                  <Link to="/slambook/home" className={classes.Links}><Button onClick={(e)=>{handleLogout(e)}}>Logout</Button></Link>            
+                    {
+                      currentLink==="Logout"?
+                      <Link to="/slambook/home" className={classes.Links}><Button onClick={(e)=>{handleLogout(e)}} style={{backgroundColor:"white"}}>Logout</Button></Link>            
+                      :
+                      <Link to="/slambook/home" onClick={()=>setCurrentLink("Logout")} className={classes.Links}><Button onClick={(e)=>{handleLogout(e)}}>Logout</Button></Link>            
+                    }
                   </Grid>
               </Grid>
           </Grid>

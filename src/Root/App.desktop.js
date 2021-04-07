@@ -54,7 +54,7 @@ export default function App_desktop() {
 
         <Route exact path="/slambook/dash/:pm1">
           {
-            isTokenThere?<Dash blogs={blogs} user={user} setIsTokenThere={setIsTokenThere} isTokenThere={isTokenThere}/>:history.replace('/slambook/home')
+            isTokenThere?<Dash blogs={blogs} user={user} setIsTokenThere={setIsTokenThere} isTokenThere={isTokenThere}/>:null
           }
         </Route>
 

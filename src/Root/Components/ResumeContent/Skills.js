@@ -4,7 +4,7 @@ import React from 'react'
 
 const useStyles = makeStyles({
     skills:{
-      paddingTop:"20%"
+      paddingTop:"10%"
     },
     title:{
         color:"#61eb85"
@@ -27,42 +27,21 @@ function Skills() {
                 </Typography>
             </Grid>
             <Grid item container>
-                <Grid item sm={4} xs={12}>
-                    <Typography align="left">
-                    Languages                    
-                    </Typography>
-                </Grid>
-                <Grid item sm={8} xs={12} >
-                    <Typography align="left">
-                    Python, Javascript, C/C++                    
-                    </Typography>
-                </Grid>
-            </Grid>
+                <div style={{textAlign:"left"}}>
+                <p>&bull; <strong>Languages&nbsp; :&nbsp;&nbsp;</strong>Python, Javascript, C/C++
+</p>
+<p>&bull;<strong> Front&nbsp;End&nbsp; :&nbsp;&nbsp;</strong>HTML5,&nbsp;CSS3,&nbsp;Material-UI,&nbsp;React&nbsp;with&nbsp;Redux&nbsp;&amp; Redux-SAGA
+</p>
+<p>&bull; <strong>Back End&nbsp; :&nbsp;&nbsp;</strong>Express/Node.js , Nodemailer, Tinymce-react
+</p>
+<p>&bull; <strong>Database&nbsp; :&nbsp;&nbsp;</strong>MongoDB, MongoDB Atlas
+</p>
+<p>&bull; <strong>Designing&nbsp; :&nbsp;&nbsp;</strong>Adobe&nbsp;Photoshop,&nbsp;Adobe&nbsp;Illustrator
+</p>
+<p>&bull; <strong>Others&nbsp; :&nbsp; </strong>Jira, VMware ESXI 5.5
+</p>
 
-            <Grid item container>
-                <Grid item sm={4} xs={12}>
-                    <Typography align="left">
-                    Front End                     
-                    </Typography>
-                </Grid>
-                <Grid item sm={8} xs={12}>
-                    <Typography align="left">
-                    HTML5, CSS3, Material-UI, React with Redux & SAGA                    
-                    </Typography>
-                </Grid>
-            </Grid>
-
-            <Grid item container>
-                <Grid item sm={4} xs={12}>
-                    <Typography align="left">
-                    Designing                    
-                    </Typography>
-                </Grid>
-                <Grid item sm={8} xs={12}>
-                    <Typography align="left">
-                    Adobe Photoshop, Adobe Illustrator, Figma                    
-                    </Typography>
-                </Grid>
+                </div>
             </Grid>
         </Grid> 
         <Grid item xs={0} sm={3}/>
