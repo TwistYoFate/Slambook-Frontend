@@ -2,7 +2,7 @@ import { call,put,takeLatest } from "redux-saga/effects";
 import Actions from "../../../Actions/Actions";
 import axios from 'axios'
 import Apis from "../../../../Utils/Apis";
-import config from '../../../../../config'
+import {config} from '../../../../../config'
 
 //Request
 

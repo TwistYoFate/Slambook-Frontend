@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import Actions from "../../../Actions/Actions";
 import api from "../../../../Utils/Apis";
+import {config} from "../../../../../config";
 
 //Request
 
