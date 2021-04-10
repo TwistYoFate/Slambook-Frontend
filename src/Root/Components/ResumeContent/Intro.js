@@ -1,7 +1,9 @@
 import React from 'react'
-import { Box, Container, Grid, Paper, Typography } from '@material-ui/core'
+import { Box, Button, Container, Grid, Hidden, Paper, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import { useState } from 'react'
+import { CustomButton } from '../../Utils/CustomUI'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
     intro:{
@@ -20,6 +22,9 @@ const useStyles = makeStyles({
         height:"100%",
         color:"white",
         transparent:"30%"
+    },
+    arrow:{
+        paddingTop:"80px"
     }
 })
 
@@ -48,7 +53,7 @@ export default Intro
 
 
 function LeftIntro(){
-
+    const classes = useStyles()
     //This will give animation to the "Hello World"
     const [counter,setCounter] = useState(0)            // Counter state to count the current index to color
     
@@ -61,38 +66,53 @@ function LeftIntro(){
     return(
         <Grid container style={{ height:"100%", paddingTop:"10%"}}>
             <Grid item xs={2}/>
-            <Grid item xs={8}>
-            <Typography variant="h2">
-            {
-                greet.map(letter=>{
-                    if(letter.id===counter)
-                    return(
-                        <span key={letter.id} style={{color:"#61EB85"}}>
-                            {letter.char}
-                        </span>
-                        
-                    )
-                    else
-                    return(
-                        <span key={letter.id} style={{color:"white"}}>
-                            {letter.char}
-                        </span>
-                    )
-                })
-            }
-            </Typography>
-            <Typography variant="body2" display="block" align="left" >
-            Do you want to work with someone who you could trust ? Someone who gives his all when doing something he likes ?
-            Well, you've come to the right page.
-            <br/> 
-            <br/>
-            I'm <span style={{color:"#61EB85", fontSize:"20px", fontFamily:"Rock Salt, cursive"}}>Deepanshu Yadav.</span>
-            <br/>
-            <br/>
-            Out of many things that I love doing Solving Problems, Coding and Playing Chess are among the latest.
-            What I believe from my experience, and inputs from my peers is that I am good both Creatively and Technically.
-            So if you want to work with me, do check out my resume below.
-            </Typography>
+            <Grid item container direction="column" xs={8}>
+                <Grid item>
+                    <Typography variant="h2">
+                    {
+                        greet.map(letter=>{
+                            if(letter.id===counter)
+                            return(
+                                <span key={letter.id} style={{color:"#61EB85"}}>
+                                    {letter.char}
+                                </span>
+
+                            )
+                            else
+                            return(
+                                <span key={letter.id} style={{color:"white"}}>
+                                    {letter.char}
+                                </span>
+                            )
+                        })
+                    }
+                    </Typography>
+                    <br /><br />
+                    <Typography variant="body2" display="block" align="left" >
+                    Do you want to work with someone who you could trust ? Someone who gives his all when doing something he likes ?
+                    Well, you've come to the right page.
+                    <br/> 
+                    <br/>
+                    I'm <span style={{color:"#61EB85", fontSize:"20px", fontFamily:"Rock Salt, cursive"}}>Deepanshu Yadav.</span>
+                    <br/>
+                    <br/>
+                    Out of many things that I love doing Solving Problems, Coding and Playing Chess are among the latest.
+                    What I believe from my experience, and inputs from my peers is that I am good both Creatively and Technically.
+                    So if you want to work with me, do check out my resume below.
+                    <br />
+                    <br />
+                    Also checkout Slambook - A Blogging website by me based on MERN stack by clicking &nbsp; 
+                    <Link to="/slambook/home"
+                    style={{color:"#61eb85",textDecoration:0}}
+                    >
+                    here
+                    </Link>. 
+                    </Typography>
+                </Grid>
+                <Grid item className={classes.arrow}>
+                    <CustomButton onClick={()=>{document.getElementById("biodata-0").scrollIntoView({behaviour:"smooth"})}}>Resume</CustomButton>
+                </Grid>
+
             </Grid>
             <Grid item xs={2}/>
         </Grid>

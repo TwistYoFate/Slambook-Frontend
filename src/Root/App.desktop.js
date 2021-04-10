@@ -8,6 +8,7 @@ import Resume from "./Routes/Resume";
 import Test from "./Utils/Test";
 import Dash from "./Routes/Dash";
 import Unauthorized from "./Components/Unauthorized";
+import Footer from "./Components/Footer";
 
 
 export default function App_desktop() {
@@ -40,9 +41,9 @@ export default function App_desktop() {
     <div className="container">
       <Switch>
 
-        {/* <Route exact path="">
-          <Test />
-        </Route> */}
+        <Route exact path="/">
+          <Resume />
+        </Route>
 
         <Route exact path="/resume">
           <Resume />
@@ -63,6 +64,7 @@ export default function App_desktop() {
         </Route>
 
       </Switch>
+      <Footer/>
     </div>
   );
 }

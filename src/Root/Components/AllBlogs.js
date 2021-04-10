@@ -29,11 +29,12 @@ function AllBlogs() {
         dispatch({type:Actions.BlogActions.GET_ALL_BLOGS_FROM_DB})
     }, [dispatch])
     const {blogs} = useSelector(state => state.blogs)
+    
     return (
         <Grid container direction="row" spacing={2}>
             {
-                
-                !blogs?<p>Loading...</p>:blogs.map(blog=>{
+                //here the blogs are sorted before rendering to keep them at the same position when liked or unliked
+                !blogs?<p>Loading...</p>:blogs.sort((a,b)=>(a.timestamp>b.timestamp)?1:-1).map(blog=>{
                     console.log("idhar  ",blog)
                     return(
                         <Grid item className="preview" key={blog._id} xs={12} md={6}>

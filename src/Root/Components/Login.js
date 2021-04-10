@@ -98,7 +98,7 @@ function Login (){
         />
         <br /><br />
         {/* <Button variant="Primary">Login</Button> */}
-        <Link to="/slambook/reset"><p>Forgot Password</p></Link>
+        <Link to="/slambook/reset" style={{textDecoration:0}}><p >Forgot Password</p></Link>
         <CustomButton type="submit">Login</CustomButton>
       </form>
       <div>

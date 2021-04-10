@@ -29,12 +29,12 @@ function WorkExperience() {
             <Grid item container spacing={2}>
                 <Grid item xs={12}>
                     <Typography variant="h5" align="left">
-                    NEC Corporation (Nov-2020 - Current)                   
+                    NEC Corporation (Jan-2020 - Current)                   
                     </Typography>
                 </Grid>
                 <Grid item xs={12} >
                     <Typography align="left">
-                    In NEC I have learned a lot about a vast variety of latest and rare technologies like,
+                    In NEC I have learned a lot about a vast variety of latest and rare technologies like, React,
                     Networking, Virtualization,Virtual Machines, Hypervisors, Cloud, Containers, Data Center, 
                     Telecommunication.
                     </Typography>

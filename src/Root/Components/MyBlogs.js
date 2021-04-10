@@ -13,14 +13,18 @@ function MyBlogs() {
     
     const dispatch = useDispatch()
     React.useEffect(() => {
-        setMyBlogs(blogs?.filter(blog=>blog.username===user.username))
+        setMyBlogs(blogs?.filter(blog=>blog.username===user.username).sort((a,b)=>(a.timestamp>b.timestamp)?1:-1))
         let token = localStorage.getItem("token");
         if(token && !(user)){
             dispatch({type:Actions.UserActions.RELOGIN_USER_USING_TOKEN})
         }
         if(!blogs)
             dispatch({type:Actions.BlogActions.GET_ALL_BLOGS_FROM_DB})
-    }, [])
+    }, [dispatch])
+
+    React.useEffect(()=>{
+        setMyBlogs(blogs?.filter(blog=>blog.username===user.username).sort((a,b)=>(a.timestamp>b.timestamp)?1:-1))
+    },[blogs])
     
     console.log(myBlogs)
     return (

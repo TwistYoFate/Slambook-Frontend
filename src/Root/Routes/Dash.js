@@ -24,9 +24,9 @@ const useStyles = makeStyles({
     IconButton:{
         backgroundColor:"#61eb85",
         position:"fixed",
-        bottom:5,
-        right:5,
-        zIndex:1
+        top:15,
+        left:50,
+        zIndex:10000,
     },
     MenuIcon:{
         color:"black",

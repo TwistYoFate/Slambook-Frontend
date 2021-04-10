@@ -9,6 +9,7 @@ import { CustomButton, CustomTextField  } from '../Utils/CustomUI';
 
 //tinyMCE - text editor
 import { Editor } from '@tinymce/tinymce-react';
+import Loader from '../Utils/Loader';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,7 @@ function AddBlog({user}) {
   const [redirectToDash, setRedirectToDash] = useState(false);
   const [title, setTitle] = useState();
   const [body, setBody] = useState();
+  const [loading,setLoading] = useState(false)
 //   const [likes,setLikes] = useState();
   const [myUser,setMyUser] = useState(false);
     
@@ -34,6 +36,7 @@ function AddBlog({user}) {
 
   const onSubmitHandle = (e) => {
     e.preventDefault();
+    setLoading(true)
     setMyUser({
     //   username: user.username,
       author: `${user.firstName} ${user.lastName}`,
@@ -110,12 +113,12 @@ function AddBlog({user}) {
                     setBody(e.target.value);
                   }}
                 /><br /><br /> */}
-                <CustomButton type="submit" form="add_blog_form">Create</CustomButton>
+                {!loading?<CustomButton type="submit" form="add_blog_form">Create</CustomButton>:null}
                 {/* <button>Create</button> */}
                 </form>
                 <>
                   {
-                      redirectToDash?<Redirect to="/slambook/dash/default" />:null
+                      redirectToDash?<Loader url="/slambook/dash/default" />:null
                   }
                 </>
         </div>

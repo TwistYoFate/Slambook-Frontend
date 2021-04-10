@@ -1,6 +1,7 @@
 import { Grid, Typography } from '@material-ui/core'
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
     WorkExperience:{
@@ -8,6 +9,14 @@ const useStyles = makeStyles({
     },
     title:{
         color:"#61eb85"
+    },
+    noDecor:{
+        textDecoration:0,
+        color:"black"
+    },
+    noDecor_hover:{
+        textDecoration:0,
+        color:"blue"
     }  
 })
 
@@ -24,7 +33,10 @@ function Projects() {
             </Grid>
             <Grid item xs={12} >
                 <Typography variant="h5" align="left">
-                • Slambook - MERN Stack based Blogging Webapp<br/><br/>
+                    <Link to="/slambook/home" className={classes.noDecor} 
+                    onMouseEnter={(event)=>{event.target.className=classes.noDecor}}
+                    onMouseLeave={(event)=>{event.target.className=classes.noDecor_hover}}
+                    >• Slambook - MERN Stack based Blogging Webapp</Link><br/><br/>
                 </Typography>
                 <div style={{textAlign:"left"}}>
                 <p>It is a portfolio-cum-blogging-app which I solely created to learn&nbsp;fullstack development and actually understand how things work. Things that I learned and used in this project are :
