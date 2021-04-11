@@ -34,7 +34,7 @@ function WorkExperience() {
                 </Grid>
                 <Grid item xs={12} >
                     <Typography align="left">
-                    In NEC I have learned a lot about a vast variety of latest and rare technologies like, React,
+                    In NEC I have had exposure to Telecom Domain, where I learned a lot about a vast variety of latest and rare technologies and domains like,
                     Networking, Virtualization,Virtual Machines, Hypervisors, Cloud, Containers, Data Center, 
                     Telecommunication.
                     </Typography>
