@@ -33,7 +33,7 @@ function Projects() {
             </Grid>
             <Grid item xs={12} >
                 <Typography variant="h5" align="left">
-                    <Link to="/slambook/home" className={classes.noDecor} 
+                    <Link to="/slambook/home" className={classes.noDecor_hover} 
                     onMouseEnter={(event)=>{event.target.className=classes.noDecor}}
                     onMouseLeave={(event)=>{event.target.className=classes.noDecor_hover}}
                     >• Slambook - MERN Stack based Blogging Webapp</Link><br/><br/>
