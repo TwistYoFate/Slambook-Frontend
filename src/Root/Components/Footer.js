@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const useStyles = makeStyles({
     footer:{
        position:"fixed",
-       top:"93vh",
+       top:"95%",
        height:"30px",
     },
     div:{

@@ -51,7 +51,7 @@ function Projects() {
     <br />
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &bull; <strong>VersionControl : </strong>Git
     <br />
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &bull; <strong>Deployment :</strong> AWS EC2
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &bull; <strong>Deployment :</strong> AWS EC2, AWS Route 53, AWS SES
   </p>
                 </div>
             </Grid>

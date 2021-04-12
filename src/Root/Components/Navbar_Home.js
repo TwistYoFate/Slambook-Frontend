@@ -32,17 +32,17 @@ function Navbar_Home({currentLink, setCurrentLink}) {
 
   const classes = useStyles()
     return (
-      <AppBar className={classes.AppBar}>
+      <AppBar className={classes.AppBar} >
         <ToolBar>
           <Grid container direction="row">
 
-          <Grid item xs={6} md={6}>
+          <Grid item xs={6}>
             <Typography>
               <h2 className={classes.title}>Slambook</h2>
             </Typography>
           </Grid>
 
-          <Grid item container xs={6} md={6}>
+          <Grid item container xs={6}>
                <Grid container spacing={1} className={classes.LinkItems} >
                   <Grid item>
                     {

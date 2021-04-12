@@ -29,9 +29,7 @@ function Resume() {
 
     return (
         <div className="resume">
-          {
-            console.log(useRef())
-          }
+
             <CustomDrawer openDrawer={openDrawer} OpenDrawer={OpenDrawer} CurrentTopic={CurrentTopic} currentTopic={currentTopic}/>
             <Grid container direction="column" spacing={8}>
                 

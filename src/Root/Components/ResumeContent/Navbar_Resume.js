@@ -40,9 +40,9 @@ function Navbar_Resume({OpenDrawer}) {
           </IconButton>
           </Grid>
           
-          <Grid md={7}/>
+          <Grid md={7} xs={0}/>
 
-          <Grid item md={4} className={classes.contact}>
+          <Grid item md={4} xs={10} className={classes.contact}>
             daybond007@gmail.com &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/deepanshu-yadav-b89311128/" className={classes.linkedin}>LinkedIn</a>
           </Grid>
 

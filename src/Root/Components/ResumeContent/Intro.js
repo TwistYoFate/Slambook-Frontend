@@ -110,7 +110,9 @@ function LeftIntro(){
                     </Typography>
                 </Grid>
                 <Grid item className={classes.arrow}>
+                <Hidden mdDown >
                     <CustomButton onClick={()=>{document.getElementById("biodata-0").scrollIntoView({behaviour:"smooth"})}}>Resume</CustomButton>
+                </Hidden>
                 </Grid>
 
             </Grid>

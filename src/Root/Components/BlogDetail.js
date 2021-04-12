@@ -65,7 +65,7 @@ function BlogDetail(props) {
             </Grid>
             <br />
             {/* <Typography variant="body1" align="left"> */}
-            {ReactHTMLParser(blog.body)}
+            <p style={{textAlign:"left"}}>{ReactHTMLParser(blog.body)}</p>
             {/* </Typography> */}
             {/* <CustomTextField
                 // id="outlined-multiline-static"
